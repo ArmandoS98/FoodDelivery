@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_categories">
+
+    <fragment
+        android:id="@+id/nav_categories"
+        android:name="com.aesc.fooddelivery.ui.fragments.CategoriesFragment"
+        android:label="Categorias"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_nav_categories_to_nav_view_categories"
+            app:destination="@id/nav_view_categories" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_view_categories"
+        android:name="com.aesc.fooddelivery.ui.fragments.ViewCategorieFragment"
+        android:label="Menu"
+        tools:layout="@layout/fragment_view_categorie">
+        <action
+            android:id="@+id/action_nav_view_categories_to_nav_categories"
+            app:destination="@id/nav_categories" />
+    </fragment>
+</navigation>

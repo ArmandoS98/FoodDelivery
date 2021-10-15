@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#d32f2f</color>
+    <color name="purple_500">#ff6659</color>
+    <color name="purple_700">#9a0007</color>
+
+    <color name="teal_200">#F09404</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#1a237e</color>
+    <color name="colorPrimaryDark">#000051</color>
+    <color name="colorAccent">#534bae</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#171717</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="led_green">#2AFF00</color>
+    <color name="led_blue">#0000FF</color>
+    <color name="led_red">#FF0000</color>
+    <color name="led_yellow">#FAFB18</color>
+
+    <color name="fondo_visa">#03229C</color>
+    <color name="fondo_texto">#FFFFFF</color>
+    <color name="franja_visa">#F09404</color>
+    <color name="success_green">#00A235</color>
+    <color name="error_red">#EB001B</color>
+</resources>
