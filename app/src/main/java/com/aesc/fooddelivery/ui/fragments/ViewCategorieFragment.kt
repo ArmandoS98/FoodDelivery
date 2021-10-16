@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.GridLayoutManager
 import com.aesc.fooddelivery.R
+import com.aesc.fooddelivery.providers.database.viewmodel.MainViewModelFavorites
 import com.aesc.fooddelivery.providers.services.models.Producto
 import com.aesc.fooddelivery.providers.services.viewmodel.MainViewModel
 import com.aesc.fooddelivery.ui.activities.MainActivity
@@ -24,6 +26,8 @@ class ViewCategorieFragment : Fragment() {
     lateinit var viewModels: MainViewModel
     private lateinit var adapter: CategoriasDetailsAdapter
     private var titulo_fragment: String? = ""
+    lateinit var viewModal: MainViewModelFavorites
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +47,11 @@ class ViewCategorieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModels = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModal = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+        ).get()
         (activity as MainActivity).supportActionBar?.title = titulo_fragment
-
         logic()
     }
 
@@ -54,7 +61,9 @@ class ViewCategorieFragment : Fragment() {
         viewModels.responseProducts.observe(viewLifecycleOwner, {
             if (!status) {
                 Utils.logsUtils("SUCCESS $it")
-                recyclerviewInit(it.productos)
+                it.productos.let { products ->
+                    recyclerviewInit(products)
+                }
             }
         })
 

@@ -15,6 +15,7 @@ data class Producto(
     val nombre: String,
     val descripcion: String,
     val precio: Long,
-    val url_imagen: String
+    val url_imagen: String,
+    val id_table: Long,
+    var isSelected: Boolean,
 ) : Parcelable
-
