@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aesc.fooddelivery.R
+import com.aesc.fooddelivery.extensions.toast
 import com.aesc.fooddelivery.providers.services.models.Dato
 import com.aesc.fooddelivery.providers.services.viewmodel.MainViewModel
 import com.aesc.fooddelivery.ui.adapters.CategoriasAdapter
@@ -56,6 +58,7 @@ class CategoriesFragment : Fragment() {
         viewModels.errorMessage.observe(viewLifecycleOwner, {
             if (!status) {
                 Utils.logsUtils("ERROR $it")
+                requireActivity().toast(getString(R.string.msg_algo_salio_mal))
             }
         })
 

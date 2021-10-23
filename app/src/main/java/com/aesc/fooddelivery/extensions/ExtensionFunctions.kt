@@ -21,11 +21,9 @@ fun Activity.toast(resourceId: Int, duration: Int = Toast.LENGTH_SHORT) =
 fun ViewGroup.inflate(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, this, false)!!
 
 fun TextView.amountConverter(precio: Long) {
-    val stringAmount = "$precio".replace(".", "")
-    val lingitud = stringAmount.length
-    val removeDot = lingitud - 2
-    val newAmount = "${stringAmount.substring(0, removeDot)}.${stringAmount.substring(removeDot)}"
-    this.text = "Q$newAmount"
+    val df = DecimalFormat("#.00")
+    val precioEnQuetzales = (precio / 81.23)
+    this.text = "Q${df.format(precioEnQuetzales)}"
 }
 
 fun MaterialCardView.backgrounCustom(nombre: String) {

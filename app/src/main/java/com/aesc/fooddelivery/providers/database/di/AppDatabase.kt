@@ -5,10 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.aesc.fooddelivery.providers.database.models.Favorites
+import com.aesc.fooddelivery.providers.database.models.Pedidos
 
-@Database(entities = [Favorites::class], version = 1, exportSchema = false)
+@Database(entities = [Favorites::class, Pedidos::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun getFavoritesDao(): FavoritesDao
+    abstract fun getFavoritesDao(): AccessDao
 
     companion object {
         @Volatile
@@ -19,7 +20,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "app_db"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 db_instance = instance
                 instance
             }

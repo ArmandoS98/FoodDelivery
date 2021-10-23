@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.GridLayoutManager
 import com.aesc.fooddelivery.R
+import com.aesc.fooddelivery.extensions.toast
 import com.aesc.fooddelivery.providers.database.viewmodel.MainViewModelFavorites
 import com.aesc.fooddelivery.providers.services.models.Producto
 import com.aesc.fooddelivery.providers.services.viewmodel.MainViewModel
@@ -70,6 +72,7 @@ class ViewCategorieFragment : Fragment() {
         viewModels.errorMessage.observe(viewLifecycleOwner, {
             if (!status) {
                 Utils.logsUtils("ERROR $it")
+                requireActivity().toast(getString(R.string.msg_algo_salio_mal))
             }
         })
 

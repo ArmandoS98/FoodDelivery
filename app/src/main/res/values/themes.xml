@@ -14,6 +14,13 @@
         <!-- Customize your theme here. -->
         <item name="drawerArrowStyle">@style/WhiteDrawerIconStyle</item>
 
+        <item name="actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
+
+    </style>
+
+
+    <style name="MyOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">#62ff00</item>
     </style>
 
     <style name="WhiteDrawerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">

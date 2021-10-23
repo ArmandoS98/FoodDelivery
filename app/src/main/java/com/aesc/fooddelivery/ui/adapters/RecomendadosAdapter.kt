@@ -3,11 +3,14 @@ package com.aesc.fooddelivery.ui.adapters
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.aesc.fooddelivery.R
 import com.aesc.fooddelivery.extensions.loadByURL
@@ -53,19 +56,32 @@ class RecomendadosAdapter(val context: Context?, val requireActivity: FragmentAc
             Utils.logsUtils("Clicked -> $item")
 
 
-            // here we send movie information to detail activity
-            // also we ll create the transition animation between the two activity
-            val intent = Intent(context, DetailProductActivity::class.java)
-            // send movie information to deatilActivity
-            intent.putExtra("values", item)
-            // lets crezte the animation
-            val options = ActivityOptions.makeSceneTransitionAnimation(
-                requireActivity,
-                itemView.item_movie_img,
-                "sharedName"
-            )
+            /*           val intent = Intent(context, DetailProductActivity::class.java)
+                       intent.putExtra("values", item)
+                       val options = ActivityOptions.makeSceneTransitionAnimation(
+                           requireActivity,
+                           itemView.item_movie_img,
+                           "sharedName"
+                       )
 
-            context!!.startActivity(intent, options.toBundle())
+                       context!!.startActivity(intent, options.toBundle())
+           */
+            //Animacion
+            val builder = NavOptions.Builder()
+                .setLaunchSingleTop(true)
+                .setEnterAnim(R.anim.from_left)
+                .setExitAnim(R.anim.to_right)
+                .setPopEnterAnim(R.anim.from_right)
+                .setPopExitAnim(R.anim.to_left)
+
+            //Envio de información
+            val bundle = Bundle()
+            bundle.putParcelable(context!!.getString(R.string.key_bundle), item)
+
+            val opciones: NavOptions = builder.build()
+
+            Navigation.findNavController(v!!)
+                .navigate(R.id.nav_recomendaciones, bundle, opciones)
         }
     }
 }

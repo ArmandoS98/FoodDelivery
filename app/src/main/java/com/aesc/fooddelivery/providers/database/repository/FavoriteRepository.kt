@@ -2,9 +2,9 @@ package com.aesc.fooddelivery.providers.database.repository
 
 import androidx.lifecycle.LiveData
 import com.aesc.fooddelivery.providers.database.models.Favorites
-import com.aesc.fooddelivery.providers.database.di.FavoritesDao
+import com.aesc.fooddelivery.providers.database.di.AccessDao
 
-class FavoriteRepository(private val favoriteDao: FavoritesDao) {
+class FavoriteRepository(private val favoriteDao: AccessDao) {
 
     val allFavorites: LiveData<List<Favorites>> = favoriteDao.getAllFavorites()
 

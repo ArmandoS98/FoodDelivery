@@ -18,13 +18,14 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/menu_action_bar"
             app:titleTextColor="@color/purple_200" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+   <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,6 +34,6 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/purple_200"
         app:srcCompat="@drawable/ic_shopping_cart_24"
-        app:tint="@color/white" />
+        app:tint="@color/white" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
