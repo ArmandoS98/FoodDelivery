@@ -17,6 +17,9 @@ class OrderRepository(private val orderDao: AccessDao) {
     suspend fun delete(order: Pedidos) {
         orderDao.deleteOrders(order)
     }
+   suspend fun delete() {
+        orderDao.deleteAllOrders()
+    }
 
     suspend fun update(order: Pedidos) {
         orderDao.updateOrders(order)

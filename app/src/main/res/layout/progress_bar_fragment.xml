@@ -16,6 +16,7 @@
         android:id="@+id/imageViewLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:contentDescription="@string/nombre"
         android:src="@drawable/icon" />
 
     <ProgressBar

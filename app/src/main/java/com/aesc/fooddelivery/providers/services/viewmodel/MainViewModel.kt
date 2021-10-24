@@ -4,12 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.aesc.fooddelivery.providers.services.models.Categorias
+import com.aesc.fooddelivery.providers.services.models.Envio
 import com.aesc.fooddelivery.providers.services.models.Products
+import com.aesc.fooddelivery.providers.services.models.StatusEnvio
 import com.aesc.fooddelivery.providers.services.repository.MainRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
 import retrofit2.Response
-
 
 /**
  * Fuentes
@@ -25,6 +26,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val responseCategorias = MutableLiveData<Categorias>()
     val responseCategorieDetails = MutableLiveData<Categorias>()
     val responseProducts = MutableLiveData<Products>()
+    val responseStatusSendOrder = MutableLiveData<StatusEnvio>()
     private var job: CompletableJob? = null
     val loading = MutableLiveData<Boolean>()
 
@@ -104,6 +106,36 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                             if (validateResponse(response)) {
                                 loading.value = false
                                 responseProducts.postValue(response.body())
+                                theJob.complete()
+                            } else {
+                                val error = "Error login"
+                                onError(error)
+                            }
+                        } else {
+                            val msg = response.message()
+                            onError(msg)
+                        }
+                    }
+                } catch (t: Throwable) {
+                    val msg = t.message.toString()
+                    onError(msg)
+                }
+            }
+        }
+    }
+
+    fun sendOrder(order: Envio) {
+        loading.value = true
+        job = Job()
+        job.let { theJob ->
+            CoroutineScope(Dispatchers.IO + theJob!! + exceptionHandler).launch {
+                try {
+                    val response = MainRepository().sendOrder(order)
+                    withContext(Main) {
+                        if (response.isSuccessful) {
+                            if (validateResponse(response)) {
+                                loading.value = false
+                                responseStatusSendOrder.postValue(response.body())
                                 theJob.complete()
                             } else {
                                 val error = "Error login"

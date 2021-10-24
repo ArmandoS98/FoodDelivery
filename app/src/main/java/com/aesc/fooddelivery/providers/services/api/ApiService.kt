@@ -1,9 +1,13 @@
 package com.aesc.fooddelivery.providers.services.api
 
 import com.aesc.fooddelivery.providers.services.models.Categorias
+import com.aesc.fooddelivery.providers.services.models.Envio
 import com.aesc.fooddelivery.providers.services.models.Products
+import com.aesc.fooddelivery.providers.services.models.StatusEnvio
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 
@@ -19,4 +23,8 @@ interface ApiService {
     //PRODUCTOS
     @GET("api/productos")
     suspend fun products(): Response<Products>
+
+    //ENVIAR PEDIDOS
+    @POST("/api/pedidos")
+    suspend fun sendOrders(@Body root: Envio?): Response<StatusEnvio>
 }

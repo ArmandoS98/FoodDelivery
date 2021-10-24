@@ -10,7 +10,6 @@ import android.widget.Toast
 import com.aesc.fooddelivery.R
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
-import com.steelkiwi.library.IncrementProductView
 import java.text.DecimalFormat
 
 fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) =
@@ -26,7 +25,7 @@ fun TextView.amountConverter(precio: Long) {
     this.text = context.getString(R.string.lblamount, precioEnQuetzales.format())
 }
 
-private fun Double.format(): String {
+ fun Double.format(): String {
     val df = DecimalFormat("#.00")
     return df.format(this)
 }
@@ -37,6 +36,14 @@ fun TextView.amountConverter(precios: String, cantidad: String) {
     val cant = cantidad.toInt()
     val precioEnQuetzales = precioEnQuetzalesTemp * cant
     this.text = context.getString(R.string.lblprecio, precioEnQuetzales.format())
+}
+
+fun amountConverter(precios: String, cantidad: String): String {
+    val precio: Double = precios.toDouble()
+    val precioEnQuetzalesTemp = (precio / 81.23)
+    val cant = cantidad.toInt()
+    val precioEnQuetzales = precioEnQuetzalesTemp * cant
+    return precioEnQuetzales.format()
 }
 
 fun TextView.amountConverterString(precios: String, cantidad: String) {
@@ -50,7 +57,7 @@ fun TextView.amountConverterString(precios: String, cantidad: String) {
 fun MaterialCardView.backgrounCustom(nombre: String) {
     when (nombre) {
         "Desayunos" -> {
-            this.setCardBackgroundColor(resources.getColor(R.color.purple_500))
+            this.setCardBackgroundColor(resources.getColor(R.color.purple_200))
         }
         "Almuerzos" -> {
             this.setCardBackgroundColor(resources.getColor(R.color.colorAccent))
@@ -66,9 +73,9 @@ fun MaterialCardView.backgrounCustom(nombre: String) {
 
 fun ImageView.loadByURL(url: String) = Glide.with(this)
     .load(url)
-    .placeholder(R.drawable.side_nav_bar)
-    .error(R.drawable.side_nav_bar)
-    .fallback(R.drawable.side_nav_bar)
+    .placeholder(R.drawable.icon)
+    .error(R.drawable.icon)
+    .fallback(R.drawable.icon)
     .into(this)
 
 

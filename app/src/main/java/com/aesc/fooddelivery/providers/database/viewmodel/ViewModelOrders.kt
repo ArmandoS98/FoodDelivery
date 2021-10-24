@@ -30,6 +30,10 @@ class ViewModelOrders(application: Application) : AndroidViewModel(application) 
         repository.delete(order)
     }
 
+    fun deleteOrders() = viewModelScope.launch(IO) {
+        repository.delete()
+    }
+
     fun updateOrder(order: Pedidos) = viewModelScope.launch(IO) {
         repository.update(order)
     }
