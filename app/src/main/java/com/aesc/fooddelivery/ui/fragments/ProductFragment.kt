@@ -20,6 +20,7 @@ import com.aesc.fooddelivery.providers.database.models.Pedidos
 import com.aesc.fooddelivery.providers.database.viewmodel.MainViewModelFavorites
 import com.aesc.fooddelivery.providers.database.viewmodel.ViewModelOrders
 import com.aesc.fooddelivery.providers.services.models.Producto
+import com.aesc.fooddelivery.providers.services.models.Productob
 import com.aesc.fooddelivery.providers.services.viewmodel.MainViewModel
 import com.aesc.fooddelivery.ui.adapters.RecomendadosAdapter
 import com.aesc.fooddelivery.ui.interfaces.IOrderNotification
@@ -40,7 +41,7 @@ import kotlinx.android.synthetic.main.increment_product.*
 
 //MVVM
 class ProductFragment : Fragment(), View.OnClickListener {
-    private var item: Producto? = null
+    private var item: Productob? = null
     private var itemID = 0
     private var interfaceOrders: IOrderNotification? = null
     lateinit var viewModels: MainViewModel
@@ -208,7 +209,6 @@ class ProductFragment : Fragment(), View.OnClickListener {
                         descripcion_producto = item!!.descripcion,
                         precio = item!!.precio.toString(),
                         url_imagen_producto = item!!.url_imagen,
-                        id_table_producto = item!!.id_table,
                         cantidad = tvCounter.text.toString(),
                     )
                 )

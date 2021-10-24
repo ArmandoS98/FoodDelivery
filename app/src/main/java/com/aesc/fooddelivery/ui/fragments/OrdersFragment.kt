@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_orders.*
 
 /**
  * A simple [Fragment] subclass.
- * Use the [OrdersFragment.newInstance] factory method to
+ * Use the [OrdersFragment] factory method to
  * create an instance of this fragment.
  */
 class OrdersFragment : Fragment(), View.OnClickListener {
@@ -96,17 +96,18 @@ class OrdersFragment : Fragment(), View.OnClickListener {
                 val cant = order.cantidad
                 val amount = order.precio
                 val price = amountConverter(amount, cant)
+
                 val orderTemp = OrderFormatter(
                     order.id_producto.toString(),
                     order.cantidad,
                     price
                 )
+
                 finalAmount += price.toDouble()
                 val jsonData: String = serializeToJson(orderTemp)!!
                 ordersTemp.add(jsonData)
             }
-            val amount = finalAmount
-            val sendOrder = Envio(1, ordersTemp.toString(), amount)
+            val sendOrder = Envio(1, ordersTemp.toString(), finalAmount)
             Utils.logsUtils("Order = $sendOrder")
 
             sendToApi(sendOrder)

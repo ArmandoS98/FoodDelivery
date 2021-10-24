@@ -13,6 +13,7 @@ import com.aesc.fooddelivery.R
 import com.aesc.fooddelivery.extensions.toast
 import com.aesc.fooddelivery.providers.database.viewmodel.MainViewModelFavorites
 import com.aesc.fooddelivery.providers.services.models.Producto
+import com.aesc.fooddelivery.providers.services.models.Productob
 import com.aesc.fooddelivery.providers.services.viewmodel.MainViewModel
 import com.aesc.fooddelivery.ui.activities.MainActivity
 import com.aesc.fooddelivery.ui.adapters.CategoriasDetailsAdapter
@@ -28,6 +29,7 @@ class ViewCategorieFragment : Fragment() {
     lateinit var viewModels: MainViewModel
     private lateinit var adapter: CategoriasDetailsAdapter
     private var titulo_fragment: String? = ""
+    private var id_category: String? = ""
     lateinit var viewModal: MainViewModelFavorites
 
 
@@ -35,6 +37,7 @@ class ViewCategorieFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             titulo_fragment = it.getString(getString(R.string.key_bundle))
+            id_category = it.getString("id_category")
         }
     }
 
@@ -60,7 +63,7 @@ class ViewCategorieFragment : Fragment() {
 
     private fun logic() {
         var status = false
-        viewModels.responseProducts.observe(viewLifecycleOwner, {
+        viewModels.responseProductsByCategory.observe(viewLifecycleOwner, {
             if (!status) {
                 Utils.logsUtils("SUCCESS $it")
                 it.productos.let { products ->
@@ -84,10 +87,10 @@ class ViewCategorieFragment : Fragment() {
                 fragmentProgressBar.visibility = View.GONE
             }
         })
-        viewModels.products()
+        viewModels.productsByCategory(id_category!!)
     }
 
-    private fun recyclerviewInit(datos: List<Producto>) {
+    private fun recyclerviewInit(datos: List<Productob>) {
         adapter = CategoriasDetailsAdapter(requireContext(), requireActivity())
         adapter.setCategories(datos)
         recyclerview.layoutManager =

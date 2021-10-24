@@ -17,6 +17,7 @@ import com.aesc.fooddelivery.extensions.amountConverter
 import com.aesc.fooddelivery.extensions.loadByURL
 import com.aesc.fooddelivery.providers.services.models.Dato
 import com.aesc.fooddelivery.providers.services.models.Producto
+import com.aesc.fooddelivery.providers.services.models.Productob
 import com.aesc.fooddelivery.ui.activities.DetailProductActivity
 import com.aesc.fooddelivery.utils.Utils
 import kotlinx.android.synthetic.main.item_categorias_details.view.*
@@ -26,7 +27,7 @@ class CategoriasDetailsAdapter(val context: Context?, val requireActivity: Fragm
     RecyclerView.Adapter<CategoriasDetailsAdapter.ViewHolder>() {
 
 
-    private var datos: List<Producto> = listOf()
+    private var datos: List<Productob> = listOf()
 
     fun ViewGroup.inflate(@LayoutRes layoutResID: Int, attachRoot: Boolean = false): View {
         return LayoutInflater.from(context).inflate(layoutResID, this, attachRoot)
@@ -46,7 +47,7 @@ class CategoriasDetailsAdapter(val context: Context?, val requireActivity: Fragm
 
     override fun getItemCount() = datos.size
 
-    fun setCategories(datos: List<Producto>) {
+    fun setCategories(datos: List<Productob>) {
         this.datos = datos
     }
 
@@ -57,7 +58,7 @@ class CategoriasDetailsAdapter(val context: Context?, val requireActivity: Fragm
 
         override fun onClick(v: View?) {
             //Le hagamos click a una cardview
-            val item: Producto = datos[adapterPosition]
+            val item: Productob = datos[adapterPosition]
             Utils.logsUtils("Clicked -> $item")
 
             when (v!!.id) {

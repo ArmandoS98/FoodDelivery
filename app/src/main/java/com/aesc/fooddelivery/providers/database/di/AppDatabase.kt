@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.aesc.fooddelivery.providers.database.models.Favorites
 import com.aesc.fooddelivery.providers.database.models.Pedidos
 
-@Database(entities = [Favorites::class, Pedidos::class], version = 7, exportSchema = false)
+@Database(entities = [Favorites::class, Pedidos::class], version = 8, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun getFavoritesDao(): AccessDao
 

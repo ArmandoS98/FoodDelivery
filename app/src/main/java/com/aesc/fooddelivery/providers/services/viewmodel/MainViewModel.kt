@@ -3,10 +3,7 @@ package com.aesc.fooddelivery.providers.services.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.aesc.fooddelivery.providers.services.models.Categorias
-import com.aesc.fooddelivery.providers.services.models.Envio
-import com.aesc.fooddelivery.providers.services.models.Products
-import com.aesc.fooddelivery.providers.services.models.StatusEnvio
+import com.aesc.fooddelivery.providers.services.models.*
 import com.aesc.fooddelivery.providers.services.repository.MainRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
@@ -25,6 +22,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val errorMessage = MutableLiveData<String>()
     val responseCategorias = MutableLiveData<Categorias>()
     val responseCategorieDetails = MutableLiveData<Categorias>()
+    val responseProductsByCategory = MutableLiveData<ProductsByCategory>()
     val responseProducts = MutableLiveData<Products>()
     val responseStatusSendOrder = MutableLiveData<StatusEnvio>()
     private var job: CompletableJob? = null
@@ -123,6 +121,37 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+    fun productsByCategory(idCategory: String) {
+        loading.value = true
+        job = Job()
+        job.let { theJob ->
+            CoroutineScope(Dispatchers.IO + theJob!! + exceptionHandler).launch {
+                try {
+                    val response = MainRepository().categorieDetails(idCategory)
+                    withContext(Main) {
+                        if (response.isSuccessful) {
+                            if (validateResponse(response)) {
+                                loading.value = false
+                                responseProductsByCategory.postValue(response.body())
+                                theJob.complete()
+                            } else {
+                                val error = "Error login"
+                                onError(error)
+                            }
+                        } else {
+                            val msg = response.message()
+                            onError(msg)
+                        }
+                    }
+                } catch (t: Throwable) {
+                    val msg = t.message.toString()
+                    onError(msg)
+                }
+            }
+        }
+    }
+
 
     fun sendOrder(order: Envio) {
         loading.value = true

@@ -1,9 +1,6 @@
 package com.aesc.fooddelivery.providers.services.api
 
-import com.aesc.fooddelivery.providers.services.models.Categorias
-import com.aesc.fooddelivery.providers.services.models.Envio
-import com.aesc.fooddelivery.providers.services.models.Products
-import com.aesc.fooddelivery.providers.services.models.StatusEnvio
+import com.aesc.fooddelivery.providers.services.models.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,8 +14,8 @@ interface ApiService {
     suspend fun categorias(): Response<Categorias>
 
     //CATERGORIAS
-    @GET("api/categorías/{idCategoria}")
-    suspend fun categoriasDetails(@Path("idCategoria") idCategoria: String): Response<Categorias>
+    @GET("api/categorias/{idCategoria}")
+    suspend fun categoriasDetails(@Path("idCategoria") idCategoria: String): Response<ProductsByCategory>
 
     //PRODUCTOS
     @GET("api/productos")

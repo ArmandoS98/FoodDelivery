@@ -65,6 +65,7 @@ class CategoriasAdapter(val context: Context?) :
             //Envio de información
             val bundle = Bundle()
             bundle.putString(context!!.getString(R.string.key_bundle), item.nombre)
+            bundle.putString("id_category", item.id.toString())
 
             val opciones: NavOptions = builder.build()
 
