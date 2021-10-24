@@ -21,7 +21,6 @@ import com.aesc.fooddelivery.utils.Utils
 import com.google.android.material.navigation.NavigationView
 import com.nex3z.notificationbadge.NotificationBadge
 import kotlinx.android.synthetic.main.action_bar_notification_icon.view.*
-import java.lang.String
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, IOrderNotification {
     private var counterOrders = 0
@@ -78,7 +77,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, IOrderNotificati
         val view = menu.findItem(R.id.cart_menu).actionView
         badge = view.findViewById(R.id.badge)
         view.cart_icon.setOnClickListener {
-            val intent = Intent(this, DetailProductActivity::class.java)
+            val intent = Intent(this, OrdersActivity::class.java)
             startActivity(intent)
         }
         updateCartCount()
@@ -91,9 +90,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, IOrderNotificati
             if (counterOrders == 0) badge!!.visibility =
                 View.INVISIBLE else {
                 badge!!.visibility = View.VISIBLE
-                badge!!.setText(String.valueOf(counterOrders))
+                badge!!.setText(counterOrders.toString())
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateCartCount()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        updateCartCount()
     }
 
     override fun onSupportNavigateUp(): Boolean {

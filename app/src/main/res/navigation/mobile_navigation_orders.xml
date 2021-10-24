@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/ordersFragment">
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.aesc.fooddelivery.ui.fragments.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" >
+        <action
+            android:id="@+id/action_ordersFragment_to_previewOrderesFragment"
+            app:destination="@id/previewOrderesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewOrderesFragment"
+        android:name="com.aesc.fooddelivery.ui.fragments.PreviewOrderesFragment"
+        android:label="fragment_preview_orderes"
+        tools:layout="@layout/fragment_preview_orderes" >
+        <action
+            android:id="@+id/action_previewOrderesFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
+    </fragment>
+</navigation>

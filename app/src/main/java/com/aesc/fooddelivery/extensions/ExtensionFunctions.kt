@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.aesc.fooddelivery.R
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
+import com.steelkiwi.library.IncrementProductView
 import java.text.DecimalFormat
 
 fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) =
@@ -21,9 +22,29 @@ fun Activity.toast(resourceId: Int, duration: Int = Toast.LENGTH_SHORT) =
 fun ViewGroup.inflate(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, this, false)!!
 
 fun TextView.amountConverter(precio: Long) {
-    val df = DecimalFormat("#.00")
     val precioEnQuetzales = (precio / 81.23)
-    this.text = "Q${df.format(precioEnQuetzales)}"
+    this.text = context.getString(R.string.lblamount, precioEnQuetzales.format())
+}
+
+private fun Double.format(): String {
+    val df = DecimalFormat("#.00")
+    return df.format(this)
+}
+
+fun TextView.amountConverter(precios: String, cantidad: String) {
+    val precio: Double = precios.toDouble()
+    val precioEnQuetzalesTemp = (precio / 81.23)
+    val cant = cantidad.toInt()
+    val precioEnQuetzales = precioEnQuetzalesTemp * cant
+    this.text = context.getString(R.string.lblprecio, precioEnQuetzales.format())
+}
+
+fun TextView.amountConverterString(precios: String, cantidad: String) {
+    val precio: Double = precios.toDouble()
+    val precioEnQuetzalesTemp = (precio / 81.23)
+    val cant = cantidad.toInt()
+    val precioEnQuetzales = precioEnQuetzalesTemp * cant
+    this.text = context.getString(R.string.lblamount, precioEnQuetzales.format())
 }
 
 fun MaterialCardView.backgrounCustom(nombre: String) {
@@ -49,6 +70,7 @@ fun ImageView.loadByURL(url: String) = Glide.with(this)
     .error(R.drawable.side_nav_bar)
     .fallback(R.drawable.side_nav_bar)
     .into(this)
+
 
 fun ImageView.loadByResource(resource: Int) = Glide.with(this).load(resource).into(this)
 

@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/nav_producto_fragment"
         android:name="com.aesc.fooddelivery.ui.fragments.ProductFragment"
-        android:label=""
+        android:label="Detalle"
         tools:layout="@layout/fragment_product">
         <action
             android:id="@+id/action_productFragment_to_nav_view_categories"

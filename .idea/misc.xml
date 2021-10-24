@@ -9,19 +9,24 @@
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/action_bar_notification_icon.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/activity_detail_product.xml" value="0.33" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/activity_orders.xml" value="0.264" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/app_bar_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/content_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_categories.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_orders.xml" value="0.2" />
+        <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_preview_orderes.xml" value="0.25407608695652173" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_product.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_product_detail.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_recomendaciones.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_view_categorie.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/increment_product.xml" value="0.25407608695652173" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/item_categorias.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/item_categorias_details.xml" value="0.33" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/item_food.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/item_orders.xml" value="0.25407608695652173" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/nav_header_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/progress_bar_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/arman/AndroidStudioProjects/FoodDelivery/app/src/main/res/menu/activity_main_drawer.xml" value="0.20520833333333333" />

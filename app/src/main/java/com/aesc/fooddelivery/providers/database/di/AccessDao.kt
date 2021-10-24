@@ -22,6 +22,9 @@ interface AccessDao {
     @Delete
     fun deleteFavorite(favorite: Favorites)
 
+    @Query("DELETE FROM favorite_entity")
+    fun deleteAllFavorites()
+
     //Orders
     @Query("SELECT * FROM order_entity")
     fun getAllOrders(): LiveData<List<Pedidos>>
@@ -37,4 +40,7 @@ interface AccessDao {
 
     @Delete
     fun deleteOrders(order: Pedidos)
+
+    @Query("DELETE FROM order_entity")
+    fun deleteAllOrders()
 }

@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDelivery">
         <activity
+            android:name=".ui.activities.OrdersActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FoodDelivery.NoActionBar" />
+        <activity
             android:name=".ui.activities.DetailProductActivity"
             android:exported="true"
             android:theme="@style/Theme.FoodDelivery.NoActionBar" />

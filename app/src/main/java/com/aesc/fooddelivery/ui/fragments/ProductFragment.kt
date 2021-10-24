@@ -24,6 +24,8 @@ import com.aesc.fooddelivery.providers.services.viewmodel.MainViewModel
 import com.aesc.fooddelivery.ui.adapters.RecomendadosAdapter
 import com.aesc.fooddelivery.ui.interfaces.IOrderNotification
 import com.aesc.fooddelivery.utils.Utils
+import com.steelkiwi.library.IncrementProductView
+import com.steelkiwi.library.listener.OnStateListener
 import kotlinx.android.synthetic.main.activity_detail_product.animation_view
 import kotlinx.android.synthetic.main.activity_detail_product.detail_movie_img
 import kotlinx.android.synthetic.main.activity_detail_product.recyclerviewFoods
@@ -31,7 +33,10 @@ import kotlinx.android.synthetic.main.activity_detail_product.tvAmount
 import kotlinx.android.synthetic.main.activity_detail_product.tvDescripcion
 import kotlinx.android.synthetic.main.activity_detail_product.tvNombre
 import kotlinx.android.synthetic.main.fragment_product.*
+import kotlinx.android.synthetic.main.fragment_product.productView
+import kotlinx.android.synthetic.main.fragment_product.tvCounter
 import kotlinx.android.synthetic.main.fragment_product.view.*
+import kotlinx.android.synthetic.main.increment_product.*
 
 //MVVM
 class ProductFragment : Fragment(), View.OnClickListener {
@@ -91,6 +96,26 @@ class ProductFragment : Fragment(), View.OnClickListener {
         tvDescripcion.text = item!!.descripcion
         detail_movie_img.animation =
             AnimationUtils.loadAnimation(requireContext(), R.anim.scale_animation)
+//        productView.setParentMiddleIcon(resources.getDrawable(R.drawable.des))
+        productView.defaultBackgroundColor = resources.getColor(R.color.purple_500)
+        productView.setOnStateListener(object : OnStateListener {
+            override fun onCountChange(count: Int) {
+                tvCounter.text = if (count == 0) {
+                    "1"
+                } else {
+                    "$count"
+                }
+            }
+
+            override fun onConfirm(count: Int) {
+
+            }
+
+            override fun onClose() {
+
+            }
+
+        })
         logic()
     }
 
@@ -178,9 +203,13 @@ class ProductFragment : Fragment(), View.OnClickListener {
                 //Agregar logica para agregar a pedidos
                 viewModalOrder.addOrder(
                     Pedidos(
-                        id_producto = item!!.id.toString(),
-                        cantidad = "1",
-                        precio = item!!.precio.toString()
+                        id_producto = item!!.id,
+                        nombre_producto = item!!.nombre,
+                        descripcion_producto = item!!.descripcion,
+                        precio = item!!.precio.toString(),
+                        url_imagen_producto = item!!.url_imagen,
+                        id_table_producto = item!!.id_table,
+                        cantidad = tvCounter.text.toString(),
                     )
                 )
                 interfaceOrders!!.addOtherOrder()
@@ -194,3 +223,4 @@ class ProductFragment : Fragment(), View.OnClickListener {
         interfaceOrders = context as IOrderNotification
     }
 }
+

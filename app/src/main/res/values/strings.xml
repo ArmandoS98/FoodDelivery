@@ -24,5 +24,11 @@
     <string name="cart">Cart</string>
     <string name="msg_algo_salio_mal">Algo salio mal, Intente mas tarde</string>
     <string name="msg_add_order_successful">El pedido a sido agregado con exito!</string>
-
+    <string name="send_order">Enviar Pedidos</string>
+    <string name="lblcantidad">Cantidad: %1$s</string>
+    <string name="lblprecio">Precio: Q%1$s</string>
+    <string name="lblamount">Q%1$s</string>
+    <string name="_1">1</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="no_hay_pedidos">No hay pedidos</string>
 </resources>
